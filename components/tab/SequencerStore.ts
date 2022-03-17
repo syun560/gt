@@ -51,12 +51,12 @@ export const seqReducer = (state: SeqState, action: SeqAction): SeqState => {
     case 'NOTE_ON':
         {
             const ch = action.channel
-            state.output.send([0x90 + ch, action.note, 40])
-            state.output.send([0x80 + ch, action.note, 40], window.performance.now() + 1000) // 1秒後にノートオフ
+            // state.output.send([0x90 + ch, action.note, 40])
+            // state.output.send([0x80 + ch, action.note, 40], window.performance.now() + 1000) // 1秒後にノートオフ
             break
         }
     case 'ALL_NOTE_OFF':
-        state.output.send([0xB0, 0x7B, 0])
+        // state.output.send([0xB0, 0x7B, 0])
         break
     case 'PROGRAM_SET_ALL':
         // state.channelData.map((ch, index) => state.output.send([0xC0 + index, ch.program]))
@@ -64,7 +64,7 @@ export const seqReducer = (state: SeqState, action: SeqAction): SeqState => {
     case 'PROGRAM_CHANGE':
         const ch = action.channel
         const num = action.programNumber
-        state.output.send([0xC0 + ch, num])
+        // state.output.send([0xC0 + ch, num])
         // let newChannelData = state.channelData.slice()
         // newChannelData[ch].program = num
         break
